@@ -1,0 +1,48 @@
+pipeline{
+    agent any
+    
+    stages {
+        stage('Build'){
+            steps {
+                echo "Building the checked-out project...";
+                bat build.bat;
+            }
+        }
+        stage('Unit-Test'){
+            steps {
+                echo "Running Junit Test..";
+                bat unit.bat;
+            }
+        }
+        stage('Quality-Gate'){
+            steps {
+                echo "Verifying quality gates...";
+                bat quality.bat;
+            } 
+        }
+        stage('Deploy'){
+            steps{
+                echo "Deploying the product...";
+                bat deploy.bat;
+            }
+        }
+    }
+    post {
+        always {
+            echo "This always run..";
+        }
+        success {
+            echo "This will run if job only success...";
+        }
+        failure {
+            echo "This will run if job only fails...";
+        }
+        unstable {
+            echo "This will run if job marks as unstable...";
+        }
+        changed {
+            echo "This will run if the job pipeline has changed...";
+            echo "For example, previously test/job is fail but now is successfull...";
+        }
+    }
+}
