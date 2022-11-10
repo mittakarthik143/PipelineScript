@@ -5,25 +5,25 @@ pipeline{
         stage('Build'){
             steps {
                 echo "Building the checked-out project...";
-                bat build.bat;
+                bat 'build.bat';
             }
         }
         stage('Unit-Test'){
             steps {
                 echo "Running Junit Test..";
-                bat unit.bat;
+                bat 'unit.bat';
             }
         }
         stage('Quality-Gate'){
             steps {
                 echo "Verifying quality gates...";
-                bat quality.bat;
+                bat 'quality.bat';
             } 
         }
         stage('Deploy'){
             steps{
                 echo "Deploying the product...";
-                bat deploy.bat;
+                bat 'deploy.bat';
             }
         }
     }
