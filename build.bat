@@ -1,0 +1,1 @@
+echo "Build Job: Triggered at : %date%:%time%";

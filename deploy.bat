@@ -1,0 +1,1 @@
+echo "Deploy Job: Triggered at : %date%:%time%";
